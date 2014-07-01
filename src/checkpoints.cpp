@@ -49,7 +49,7 @@ genesis.GetHash = 000001e8998004237486cb455549a5414d43d3240d06c7c2b7a092440d2e90
     */
     static MapCheckpoints mapCheckpoints =
         boost::assign::map_list_of
-        (     0, uint256("0x000001e8998004237486cb455549a5414d43d3240d06c7c2b7a092440d2e9072"))
+        (     0, uint256("0x000005dae8a9d40d07306a6845236c0df7a1402200cdd274a8af02e02f5e0378"))
         ;
     static const CCheckpointData data = {
         &mapCheckpoints,
