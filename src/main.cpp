@@ -45,8 +45,7 @@ using namespace boost;
 // Global state
 //
 
-CCriticalSection cs_main;
-xFee
+CCriticalSection cs_main
 CTxMemPool mempool;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
