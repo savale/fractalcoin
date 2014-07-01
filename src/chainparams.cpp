@@ -131,24 +131,27 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nBits    = 0x1e0ffff0;
+        genesis.nBits    = bnProofOfWorkLimit.GetCompact(); //0x1e0ffff0;0x1e0ffff0;
         genesis.nTime = 1402197204;
-        genesis.nNonce = 1939915;
+        genesis.nNonce = 0;
 
         hashGenesisBlock = genesis.GetHash();
 
-        if (false) 
+        if (true)
         {
             printf("Searching for genesis block...\n");
             // This will figure out a valid hash and Nonce if you're
             // creating a different genesis block:
             uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
             uint256 thash;
+            
+            CBigNum bnTarget;
+            bnTarget.SetCompact(genesis.nBits);
 
             while(1)
             {
                 thash=genesis.GetHash();
-                if (thash <= hashTarget)
+                if ((thash <= hashTarget) && (thash <= bnTarget.getuint256()) )
                     break;
                 if ((genesis.nNonce & 0xFFF) == 0)
                 {
@@ -163,37 +166,24 @@ public:
             }
             printf("genesis.nTime = %u \n",genesis.nTime);
             printf("genesis.nNonce = %u \n",genesis.nNonce);
+            printf("min nBit: %08x\n", bnProofOfWorkLimit.GetCompact());
             printf("genesis.hashMerkleRoot = %s\n",genesis.hashMerkleRoot.ToString().c_str());
             printf("genesis.GetHash = %s\n",genesis.GetHash().ToString().c_str());
             exit(1);
         }
         /*
-genesis.nTime = 1402197204 
-genesis.nNonce = 1939915 
+genesis.nTime = 1404190264
+genesis.nNonce = 619289
+min nBit: 1e0fffff
 genesis.hashMerkleRoot = e85e61ae6240a486898d36427284d1bfeb04d56edb137288b9e3614bc437c3b0
-genesis.GetHash = 0000092c4440834fd6f231f54a8dbc3e989091277e4be49cf28b7f62b0385b75
-        */
+genesis.GetHash = 0000010f33508238557dc9342dc885e5215870dc634ef26d4a82e5a9fa38ffed
+*/
 
         assert(genesis.hashMerkleRoot == uint256("0xe85e61ae6240a486898d36427284d1bfeb04d56edb137288b9e3614bc437c3b0"));
         assert(hashGenesisBlock == uint256("0x0000092c4440834fd6f231f54a8dbc3e989091277e4be49cf28b7f62b0385b75"));
 
-        vSeeds.push_back(CDNSSeedData("seed1.fractalcoin.net", "seed1.fractalcoin.net"));
-        vSeeds.push_back(CDNSSeedData("seed2.fractalcoin.net", "seed2.fractalcoin.net"));
-        vSeeds.push_back(CDNSSeedData("seed3.fractalcoin.net", "seed3.fractalcoin.net"));
-        vSeeds.push_back(CDNSSeedData("seed4.fractalcoin.net", "seed4.fractalcoin.net"));
-        vSeeds.push_back(CDNSSeedData("seed5.fractalcoin.net", "seed5.fractalcoin.net"));
-        vSeeds.push_back(CDNSSeedData("seed6.fractalcoin.net", "seed6.fractalcoin.net"));
-        vSeeds.push_back(CDNSSeedData("seed7.fractalcoin.net", "seed7.fractalcoin.net"));
-        vSeeds.push_back(CDNSSeedData("seed8.fractalcoin.net", "seed8.fractalcoin.net"));
-        vSeeds.push_back(CDNSSeedData("seed1.fractalco.in", "seed1.fractalco.in"));
-        vSeeds.push_back(CDNSSeedData("seed2.fractalco.in", "seed2.fractalco.in"));
-        vSeeds.push_back(CDNSSeedData("seed3.fractalco.in", "seed3.fractalco.in"));
-        vSeeds.push_back(CDNSSeedData("seed4.fractalco.in", "seed4.fractalco.in"));
-        vSeeds.push_back(CDNSSeedData("seed5.fractalco.in", "seed5.fractalco.in"));
-        vSeeds.push_back(CDNSSeedData("seed6.fractalco.in", "seed6.fractalco.in"));
-        vSeeds.push_back(CDNSSeedData("seed7.fractalco.in", "seed7.fractalco.in"));
-        vSeeds.push_back(CDNSSeedData("seed8.fractalco.in", "seed8.fractalco.in"));
-        vSeeds.push_back(CDNSSeedData("earlz.net", "earlz.net"));
+//        vSeeds.push_back(CDNSSeedData("seed1.fractalcoin.net", "seed1.fractalcoin.net"));
+//        vSeeds.push_back(CDNSSeedData("seed2.fractalcoin.net", "seed2.fractalcoin.net"));
 
 
         // Workaround for Boost not being quite compatible with C++11;
