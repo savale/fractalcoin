@@ -131,9 +131,9 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nBits    = bnProofOfWorkLimit.GetCompact();;
+        genesis.nBits    = 0x1e0fffff; //bnProofOfWorkLimit.GetCompact();;
         genesis.nTime = 1404234728;
-        genesis.nNonce = 0;
+        genesis.nNonce = 83929;
 
         hashGenesisBlock = genesis.GetHash();
 
@@ -172,15 +172,15 @@ public:
             exit(1);
         }
         /*
-genesis.nTime = 1402197204
-genesis.nNonce = 333049
+genesis.nTime = 1404234728
+genesis.nNonce = 83929
 min nBit: 1e0fffff
 genesis.hashMerkleRoot = e85e61ae6240a486898d36427284d1bfeb04d56edb137288b9e3614bc437c3b0
-genesis.GetHash = 000005dae8a9d40d07306a6845236c0df7a1402200cdd274a8af02e02f5e0378
+genesis.GetHash = 00000a9de26c53760957d7fe7283d37dec1df9e6eac6c541193df3e6d4c62255
 */
 
         assert(genesis.hashMerkleRoot == uint256("0xe85e61ae6240a486898d36427284d1bfeb04d56edb137288b9e3614bc437c3b0"));
-        assert(hashGenesisBlock == uint256("0x000005dae8a9d40d07306a6845236c0df7a1402200cdd274a8af02e02f5e0378"));
+        assert(hashGenesisBlock == uint256("0x00000a9de26c53760957d7fe7283d37dec1df9e6eac6c541193df3e6d4c62255"));
 
 //        vSeeds.push_back(CDNSSeedData("seed1.fractalcoin.net", "seed1.fractalcoin.net"));
 //        vSeeds.push_back(CDNSSeedData("seed2.fractalcoin.net", "seed2.fractalcoin.net"));
