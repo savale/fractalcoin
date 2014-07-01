@@ -131,13 +131,13 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nBits    = bnProofOfWorkLimit.GetCompact(); //0x1e0ffff0;0x1e0ffff0;
+        genesis.nBits    = 0x1e0fffff; //bnProofOfWorkLimit.GetCompact();;
         genesis.nTime = 1402197204;
-        genesis.nNonce = 0;
+        genesis.nNonce = 333049;
 
         hashGenesisBlock = genesis.GetHash();
 
-        if (true)
+        if (false)
         {
             printf("Searching for genesis block...\n");
             // This will figure out a valid hash and Nonce if you're
@@ -173,14 +173,14 @@ public:
         }
         /*
 genesis.nTime = 1402197204
-genesis.nNonce = 666788
+genesis.nNonce = 333049
 min nBit: 1e0fffff
 genesis.hashMerkleRoot = e85e61ae6240a486898d36427284d1bfeb04d56edb137288b9e3614bc437c3b0
-genesis.GetHash = 000001e8998004237486cb455549a5414d43d3240d06c7c2b7a092440d2e9072
+genesis.GetHash = 000005dae8a9d40d07306a6845236c0df7a1402200cdd274a8af02e02f5e0378
 */
 
         assert(genesis.hashMerkleRoot == uint256("0xe85e61ae6240a486898d36427284d1bfeb04d56edb137288b9e3614bc437c3b0"));
-        assert(hashGenesisBlock == uint256("0x000001e8998004237486cb455549a5414d43d3240d06c7c2b7a092440d2e9072"));
+        assert(hashGenesisBlock == uint256("0x000005dae8a9d40d07306a6845236c0df7a1402200cdd274a8af02e02f5e0378"));
 
 //        vSeeds.push_back(CDNSSeedData("seed1.fractalcoin.net", "seed1.fractalcoin.net"));
 //        vSeeds.push_back(CDNSSeedData("seed2.fractalcoin.net", "seed2.fractalcoin.net"));
