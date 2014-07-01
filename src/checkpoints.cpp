@@ -40,20 +40,20 @@ namespace Checkpoints
     //    timestamp before)
     // + Contains no strange transactions
     
-/*    
-    genesis.nTime = 1402197204
-genesis.nNonce = 666788
+        /*
+genesis.nTime = 1404234728
+genesis.nNonce = 83929
 min nBit: 1e0fffff
 genesis.hashMerkleRoot = e85e61ae6240a486898d36427284d1bfeb04d56edb137288b9e3614bc437c3b0
-genesis.GetHash = 000001e8998004237486cb455549a5414d43d3240d06c7c2b7a092440d2e9072
-    */
+genesis.GetHash = 00000a9de26c53760957d7fe7283d37dec1df9e6eac6c541193df3e6d4c62255
+*/
     static MapCheckpoints mapCheckpoints =
         boost::assign::map_list_of
-        (     0, uint256("0x000005dae8a9d40d07306a6845236c0df7a1402200cdd274a8af02e02f5e0378"))
+        (     0, uint256("0x00000a9de26c53760957d7fe7283d37dec1df9e6eac6c541193df3e6d4c62255"))
         ;
     static const CCheckpointData data = {
         &mapCheckpoints,
-        1402197204, // * UNIX timestamp of last checkpoint block
+        1404234728, // * UNIX timestamp of last checkpoint block
         0,    // * total number of transactions between genesis and last checkpoint
                     //   (the tx=... number in the SetBestChain debug.log lines)
         60*60*24*2+100      // * estimated number of transactions per day after checkpoint
